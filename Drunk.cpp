@@ -10,10 +10,12 @@
 #include <cstdlib>
 #include <ctime>
 using namespace std;
-using namespace VEKTOR2D;
+using namespace VEKTORND;
 int cel, ilosc=0;
 float krok;
 float x, y;
+
+/*
 int main() {
 	Vektor Glowny;//glowny wektor
 	srand(time(0));
@@ -36,4 +38,15 @@ int main() {
 	}
 	cout<<"pijak wyszedl poza w "<<ilosc<<"krokach\n";
 
+	return 0;
+}
+*/
+
+int main(){
+
+
+
+
+
+	return 0;
 }

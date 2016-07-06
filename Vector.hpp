@@ -1,3 +1,6 @@
+#ifndef VEKTOR_HH
+#define VEKTOR_HH
+
 #include <cmath>
 
 namespace VEKTOR2D{
@@ -63,24 +66,96 @@ return tmp;
 
 
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////Wektor n elementowy
+namespace VEKTORND{
+
+
+
+template<typename klasa, int rozmiar>
+class Vektor{
+	klasa skladowa[rozmiar];
+public:
+
+	// oparatory wyłuskania
+
+
+	klasa & operator[](int indeks){
+		return skladowa[indeks];
+	}
+	const klasa & operator[](int indeks){
+		return skladowa[indeks];
+	}
+
+
+	const klasa & operator+(const Vektor & arg2){
+		Vektor tmp;
+		for(int i=0;i<rozmiar;i++){
+			tmp.skladowa[i]=skladowa[i]+arg2.skladowa[i];
+		}
+		return tmp;
+	}
+
+	float  operator*(const Vektor & arg2){ //iloczyn skalarny;
+		float tmp=0;
+		for(int i=0;i<rozmiar;i++){
+			tmp+=arg2.skladowa[i]*skladowa[i];
+		}
+		return tmp;
+	}
+
+
+
+
+
+
+
+};
+}
+
+
+#endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -44,8 +44,8 @@ int main() {
 
 int main(){
 
-
-
+	float x[3]={3,3,2};
+	Vektor <float,3>  fx(x);
 
 
 	return 0;

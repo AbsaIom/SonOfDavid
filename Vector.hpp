@@ -1,6 +1,6 @@
 #ifndef VEKTOR_HH
 #define VEKTOR_HH
-
+#include <iostream>
 #include <cmath>
 
 namespace VEKTOR2D{
@@ -79,24 +79,37 @@ namespace VEKTORND{
 
 
 
-template<typename klasa, int rozmiar>
-class Vektor{
+template<class klasa, int rozmiar>class Vektor{
 	klasa skladowa[rozmiar];
 public:
+	//do zrobienia konstruktor
+
+	Vektor(){
+		for(int i=0;i<rozmiar;i++){
+			skladowa[i]=0;
+		}
+	}
 
 	// oparatory wyłuskania
+
 
 
 	klasa & operator[](int indeks){
 		return skladowa[indeks];
 	}
-	const klasa & operator[](int indeks){
+	const klasa & operator[](int indeks)const{
 		return skladowa[indeks];
 	}
+	//konstruktor, przypisujący wektorowi jakieś dane
+	Vektor(klasa * tablica){
+			for(int i=0;i<rozmiar;i++){
+				skladowa[i]=tablica[i];
+			}
+		}
 
-
-	const klasa & operator+(const Vektor & arg2){
-		Vektor tmp;
+	const Vektor operator+(const Vektor & arg2)
+	{
+		Vektor <klasa,rozmiar> tmp;
 		for(int i=0;i<rozmiar;i++){
 			tmp.skladowa[i]=skladowa[i]+arg2.skladowa[i];
 		}
@@ -111,13 +124,34 @@ public:
 		return tmp;
 	}
 
+	 const Vektor  operator-(const Vektor &arg2){
+		Vektor <klasa,rozmiar> tmp;
+		for(int i =0;i<rozmiar;i++){
+			tmp.skladowa[i]=skladowa[i]-arg2.skladowa[i];
+		}
+		return tmp;
+	}
 
-
-
-
-
-
+	float length(){
+		float tmp=0;
+		for(int i;i<rozmiar;i++){
+			tmp+=(skladowa[i]*skladowa[i]);
+		}
+		tmp =sqrt(tmp);
+		return tmp;
+	}
 };
+
+template<class klasa,int rozmiar>
+std::ostream & operator<<(std::ostream & strm,const Vektor<klasa, rozmiar> & Vek ){
+	for(int i=0;i<rozmiar;i++){
+		strm<<Vek[i]<<" ";
+	}
+	return strm;
+}
+
+
+
 }
 
 
